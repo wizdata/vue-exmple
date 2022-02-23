@@ -30,7 +30,7 @@ export default {
       window.location.reload();
     },
     isEs() {
-      return window.location.hash =='#/es' ? true : false
+      return window.location.hash =='#/es'
     }
   }
 }
