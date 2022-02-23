@@ -11,7 +11,7 @@ const routes = {
 export default {
   data() {
     return {
-      currentPath: window.location.hash
+      currentPath: window.location.hash      
     }
   },
   computed: {
@@ -23,11 +23,21 @@ export default {
     window.addEventListener('hashchange', () => {
 		  this.currentPath = window.location.hash
 		})
+  },
+  methods: {
+    reloadPage(ev) {
+      window.location.href = ev.currentTarget
+      window.location.reload();
+    },
+    isEs() {
+      return window.location.hash =='#/es' ? true : false
+    }
   }
 }
 </script>
 
 <template>
-  <a href="/#/es">Spanish</a>
+  <a v-if="isEs()" href="/" @click="reloadPage($event)">English</a>
+  <a  v-else href="/#/es" @click="reloadPage($event)">Español</a> 
   <component :is="currentView" />
 </template>
